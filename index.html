@@ -1777,3 +1777,34 @@ h1, h2, h3, h4, h5, .font-poppins {
         <p class="mt-2 md:mt-0 tracking-widest text-gray-500 bg-gray-100 px-4 py-1 rounded-full">DADOS CONFIDENCIAIS</p>
     </div>
 </footer>
+ 
+<script>
+function showSection(sectionId) {
+    // Ocultar todas as seções
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+    });
+ 
+    // Exibir a selecionada
+    const target = document.getElementById(sectionId);
+    if (target) {
+        target.classList.add('active');
+    }
+ 
+    // Atualizar classes das tabs de navegação
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('tab-active');
+    });
+    const activeBtn = document.getElementById('btn-' + sectionId);
+    if (activeBtn) {
+        activeBtn.classList.add('tab-active');
+        // Centralizar o botão ativo no scroll horizontal mobile
+        activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+ 
+    // Scroll para o topo ao alterar aba (respeitando o header fixo)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
